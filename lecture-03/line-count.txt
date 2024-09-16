@@ -1,0 +1,4 @@
+ 1 lecture-03/a.txt
+ 2 lecture-03/b.txt
+ 3 lecture-03/count.txt
+ 6 total

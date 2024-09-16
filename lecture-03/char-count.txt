@@ -1,0 +1,5 @@
+ 12 lecture-03/a.txt
+ 19 lecture-03/b.txt
+ 67 lecture-03/count.txt
+ 73 lecture-03/line-count.txt
+171 total
