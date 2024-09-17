@@ -1,3 +1,5 @@
+import time
+
 import environ
 import requests
 
@@ -10,11 +12,17 @@ OPENWEATHER_API_KEY = env("OPENWEATHER_KEY")
 
 def get_latitude_longitude(city):
     try:
+        start_time = time.time()
         response = requests.get(
             f"https://api.opencagedata.com/geocode/v1/json?q={city}&key={OPENCAGE_API_KEY}"
         )
-        response.raise_for_status()
+        # response.raise_for_status()
+        end_time = time.time()
+        print(
+            f"Time taken to get latitude and longitude: {end_time - start_time:.2f} seconds"
+        )
         data = response.json()
+        # print(data)
 
         if data["results"]:
             lat = data["results"][0]["geometry"]["lat"]
@@ -32,11 +40,15 @@ def get_latitude_longitude(city):
 
 def get_current_weather(lat, lon):
     try:
+        start_time = time.time()
         response = requests.get(
             f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OPENWEATHER_API_KEY}&units=metric"
         )
-        response.raise_for_status()
+        # response.raise_for_status()
+        end_time = time.time()
+        print(f"Time taken to get weather data: {end_time - start_time:.2f} seconds")
         data = response.json()
+        # print(data)
 
         if data:
             weather_description = data["weather"][0]["description"].title()
